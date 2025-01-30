@@ -127,6 +127,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 358107009782016163, guid: b1d8a81f9445739499ba69e60d3ca71f, type: 3}
   m_PrefabInstance: {fileID: 401995556}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &128211029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 128211030}
+  m_Layer: 0
+  m_Name: SlashAnimationSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &128211030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128211029}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.37710935, w: 0.9261688}
+  m_LocalPosition: {x: 0.49, y: 0.46, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1143951131}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 44.309}
 --- !u!1001 &150154232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -739,6 +770,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e21912de63556c45903501a5b56210c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slashAnimationPrefab: {fileID: 6718373317501556894, guid: c968f8b4bcd21544c9adc718a5528c76, type: 3}
+  slashAnimationSpawnPoint: {fileID: 128211030}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,6 +1416,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 544695708}
+  - {fileID: 128211030}
   m_Father: {fileID: 787664905}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1143951132
