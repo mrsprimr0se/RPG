@@ -1980,6 +1980,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2148737916853375889, guid: 542ef8784dbf98a4687a13137adadeb6, type: 3}
+      propertyPath: restoreDefaultMatTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6181651824452151528, guid: 542ef8784dbf98a4687a13137adadeb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.33039308
