@@ -7,11 +7,13 @@ public class Sword : MonoBehaviour
     [SerializeField] private GameObject slashAnimationPrefab;
     [SerializeField] private Transform slashAnimationSpawnPoint;
     [SerializeField] private Transform weaponCollider;
+    [SerializeField] private float swordAttackCD = .5f;
 
     private PlayerControls playerControls;
     private Animator myAnimator;
     private PlayerController playerController;
     private ActiveWeapon activeWeapon;
+    private bool attackButtonDown, isAttacking = false;
 
     private GameObject slashAnimation;
 
@@ -31,21 +33,44 @@ public class Sword : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerControls.Combat.Attack.started += _ => Attack();
+        playerControls.Combat.Attack.started += _ => StartAttacking();
+        playerControls.Combat.Attack.canceled += _ => StopAttacking();
     }
 
     private void Update()
     {
         MouseFollowWithOffset();
+        Attack();
+    }
+
+    private void StartAttacking()
+    {
+        attackButtonDown = true;
+    }
+
+    private void StopAttacking()
+    {
+        attackButtonDown = false;   
     }
 
     private void Attack()
     {
-        myAnimator.SetTrigger("Attack");
-        weaponCollider.gameObject.SetActive(true);  
+        if (attackButtonDown && !isAttacking)
+        {
+            isAttacking = true; 
+            myAnimator.SetTrigger("Attack");
+            weaponCollider.gameObject.SetActive(true);
 
-       slashAnimation =  Instantiate(slashAnimationPrefab, slashAnimationSpawnPoint.position, Quaternion.identity);
-        slashAnimation.transform.parent = this.transform.parent;
+            slashAnimation = Instantiate(slashAnimationPrefab, slashAnimationSpawnPoint.position, Quaternion.identity);
+            slashAnimation.transform.parent = this.transform.parent;
+            StartCoroutine(AttackCDRoutine());
+        }
+    }
+
+    private IEnumerator AttackCDRoutine()
+    {
+        yield return new WaitForSeconds(swordAttackCD);
+        isAttacking = false;
     }
 
     public void DoneAttackingAnimationEvent()
